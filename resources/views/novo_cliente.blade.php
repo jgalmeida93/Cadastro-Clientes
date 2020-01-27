@@ -80,10 +80,6 @@
             </div>
         </div>
     </main>
-    
-    @if (isset($errors))
-    {{ var_dump($errors) }}
-    @endif
 
     <script src="{{'js/app.js'}}" type="text/javascript"></script>
 </body>
