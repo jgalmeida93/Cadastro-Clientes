@@ -35,10 +35,14 @@
                             </thead>
                             <tbody>
                                 @foreach ($clientes as $c)
-                                    <tr>
-                                        
-                                    </tr>
-                                @endforeach
+                                <tr>
+                            <td>{{ $c->id }}</td>
+                            <td>{{ $c->nome }}</td>
+                            <td>{{ $c->endereco }}</td>
+                            <td>{{ $c->idade }}</td>
+                            <td>{{ $c->email }}</td>
+                        </tr>    
+                            @endforeach
                             </tbody>
 
                         </table>

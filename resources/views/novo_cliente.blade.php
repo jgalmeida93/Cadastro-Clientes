@@ -41,15 +41,30 @@
                                 <label for="email">Email</label>
                                 <input type="text" id="email" class="form-control" name="email" placeholder="Email do cliente">
                             </div>
-                            <a href="" role="button" class="btn btn-primary btn-sm">Salvar</a>
-                            <a href="" role="button" class="btn btn-primary btn-sm">Cancelar</a>
+
+                            <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+                            <button type="submit" class="btn btn-secondary btn-sm">Cancelar</button>
+
                         </form>
                     </div>
+                    @if ($errors->any())
+                        <div class="card-footer">
+                            @foreach ($errors->all() as $err)
+                                <div class="alert alert-danger" role="alert">
+                                    {{ $err }}
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </main>
+    
+    @if (isset($errors))
+    {{ var_dump($errors) }}
+    @endif
 
-<script src="{{'js/app.js'}}" type="text/javascript"></script>
+    <script src="{{'js/app.js'}}" type="text/javascript"></script>
 </body>
 </html>

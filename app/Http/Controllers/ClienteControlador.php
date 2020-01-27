@@ -38,7 +38,38 @@ class ClienteControlador extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras = [
+            'nome' => 'required|min:3|max:20',
+            'idade' => 'required',
+            'endereco' => 'required|min:5',
+            'email' => 'required|email'  
+        ];        
+
+        $mensagens = [
+            'nome.required' => 'O nome é obrigatório',
+            'nome.min' => 'Nome precisa ter no mínimo 3 caracteres`',
+            'idade.required' => 'Idade é um campo obrigatório',
+            'email.required' => 'O email é um campo obrigatório',
+            'email.email' => 'O email precisa ser válido',
+            'endereco.required' => 'Endereço é um campo obrigatório'
+        ];
+
+        $request->validate($regras, $mensagens);
+
+        // $request->validate([
+        //     'nome' => 'required|min:3|max:20',
+        //     'idade' => 'required',
+        //     'endereco' => 'required|min:5',
+        //     'email' => 'required|email'            
+        // ]);
+
+        $cliente = new Cliente();
+        $cliente->nome = $request->input('nome');
+        $cliente->idade = $request->input('idade');
+        $cliente->endereco = $request->input('endereco');
+        $cliente->email = $request->input('email');
+        $cliente->save();
+        return redirect('/');
     }
 
     /**
